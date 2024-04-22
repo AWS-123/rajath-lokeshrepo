@@ -23,9 +23,7 @@ cidr_block = "10.0.1.0/24"
 tags = {
 Name = "private-1"
 }
-
 }
-
 resource "aws_internet_gateway" "gw" {
 vpc_id = aws_vpc.lokeshvpc-2.id
 tags = {
@@ -110,6 +108,15 @@ Name  = "Lokesh"
 }
 }
 
+resource "aws_instance" "instance1" {
+ami           = "ami-0684f3b195c7387ad"
+instance_type = "t3.micro"
+subnet_id     = aws_subnet.lokesh-sub2.id
+count         = 2
+tags  = {
+Name  = "patnam"
+}
+}
 resource "aws_instance" "instance1" {
 ami           = "ami-0684f3b195c7387ad"
 instance_type = "t3.micro"
